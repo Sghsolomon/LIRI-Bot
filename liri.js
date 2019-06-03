@@ -45,8 +45,29 @@ function usercommand(userInput, userQuery){
 usercommand(userInput, userQuery);
 
 function concertThis(){
+    console.log(`\n-----------\n\ SEARCHING FOR.....${userQuery}'s next show...`);
+    //Use request as out query URL using our user query variable as the parameter of our search
+    request("https://rest.bandsintown.com/artists/") + userQuery + "/events?app_id=" + bandsintownresponse, body
+//If there is no errow give us a 200 status code (everything ok!)
+if(error && response.statusCode === 200){
+    // capture data and use json to format
+    let userBand = json.parse(body);
+    // parse data and use for loop to access paths to data
+     if(userBand.length > 0){
+         for(i = 0; i < 1; i++){
+             //console desired data using E6 syntax
+             console.log(`\ that is for you ..\n\Artist:${userBand[i].lineup[0]} \nVenue: ${userBand[i].venue.name}\nVenue Location: ${userBand[i].venue.latitude}, ${userBand[i].venue.longitude} \nVenue City: ${userBand[i].venue.city}, ${userBand[i].venue.country}`) 
+         //Moment.js to format the date MM/DD/YY
+         let concertDate = moment(userBand[i].datetime).format("MM/DD/YY hh:00 A");
+         console.log(`Date and Time: ${concertDate}\n\n--- `);
+            };
 
+     } else{
+         console.log('band or concert not found');
+     }
+     }
 }
+
 function spotifyThisSong(){
 
 }
