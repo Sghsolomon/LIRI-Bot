@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/Sghsolomon/LIRI-Bot#readme",
   "dependencies": {
-    "axios": "^0.19.0"
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "node-emv": "^1.0.22",
+    "node-spotify-api": "^1.1.1"
   }
 }
